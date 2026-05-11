@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 200" width="600" height="200">
+  <defs>
+    <!-- 文字渐变 - 柔和暖色 -->
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="80%">
+      <stop offset="0%" style="stop-color:#E8A87C;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#C38D9E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6C9EBF;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 柔和发光滤镜 -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- =====  Y 字母 ===== -->
+  <g filter="url(#glow)" transform="translate(12, -8)">
+    <path d="M 85 48 
+             Q 92 72, 98 85 
+             Q 102 70, 110 48 
+             L 130 112
+             Q 133 120, 128 124
+             Q 123 128, 118 120
+             L 105 92
+             L 92 120
+             Q 87 128, 82 124
+             Q 77 120, 80 112
+             Z" 
+          fill="url(#textGrad)" 
+          transform="rotate(-3, 105, 86)"/>
+  </g>
+  
+  <!-- =====  K 字母 ===== -->
+  <g filter="url(#glow)" transform="translate(8, -8)">
+    <path d="M 160 42 
+             Q 164 48, 163 60
+             L 163 108
+             Q 164 120, 158 126
+             Q 153 130, 150 124
+             L 150 44
+             Q 151 39, 156 39
+             Q 160 39, 160 42 Z" 
+          fill="url(#textGrad)"/>
+    <path d="M 163 68 
+             Q 180 62, 198 48
+             Q 204 44, 207 49
+             Q 209 54, 203 58
+             L 185 76
+             L 205 102
+             Q 211 108, 208 113
+             Q 204 117, 198 112
+             L 172 86
+             Q 165 80, 163 74
+             Z" 
+          fill="url(#textGrad)"/>
+  </g>
+  
+  <!-- =====  T 字母 ===== -->
+  <g filter="url(#glow)" transform="translate(12, -8)">
+    <path d="M 228 40 
+             Q 235 40, 235 45
+             L 235 48
+             L 255 48
+             Q 262 48, 262 53
+             Q 262 58, 255 58
+             L 235 58
+             L 235 118
+             Q 235 127, 222 127
+             Q 215 127, 215 118
+             L 215 58
+             L 205 58
+             Q 198 58, 198 53
+             Q 198 48, 205 48
+             L 215 48
+             L 215 45
+             Q 215 40, 222 40
+             Z" 
+          fill="url(#textGrad)"/>
+  </g>
+  
+  <!-- =====  w 字母 ===== -->
+  <g filter="url(#glow)" transform="translate(5, -8)">
+    <path d="M 275 48 
+             Q 280 52, 283 62
+             L 293 108
+             Q 296 118, 291 123
+             Q 286 128, 283 122
+             L 278 94
+             Q 274 82, 270 94
+             L 265 122
+             Q 262 128, 257 123
+             Q 252 118, 255 108
+             L 265 62
+             Q 268 52, 272 48
+             Q 274 45, 275 48 Z" 
+          fill="url(#textGrad)"/>
+    <path d="M 303 62 
+             Q 306 52, 311 48
+             Q 316 45, 319 51
+             L 329 108
+             Q 332 118, 327 123
+             Q 322 128, 319 122
+             L 314 88
+             L 309 122
+             Q 306 128, 301 123
+             Q 296 118, 299 108
+             Z" 
+          fill="url(#textGrad)"/>
+  </g>
+  
+  <!-- =====  o 字母 ===== -->
+  <g filter="url(#glow)" transform="translate(0, -8)">
+    <ellipse cx="362" cy="86" rx="20" ry="34" fill="url(#textGrad)" 
+             transform="rotate(-5, 362, 86)"/>
+    <!-- 镂空部分改为透明 -->
+    <ellipse cx="362" cy="86" rx="10" ry="22" fill="transparent"
+             transform="rotate(-5, 362, 86)"/>
+  </g>
+  
+  <!-- 尾部飘逸装饰线 -->
+  <path d="M 392 52 
+           Q 405 46, 418 53
+           Q 435 62, 450 56
+           Q 465 50, 480 58
+           Q 495 66, 510 58
+           Q 525 50, 540 60" 
+        stroke="url(#textGrad)" stroke-width="2.2" fill="none" 
+        stroke-linecap="round" filter="url(#softGlow)" opacity="0.7"/>
+  
+  <!-- 飘动的小圆点 -->
+  <circle cx="550" cy="62" r="3" fill="#C38D9E" opacity="0.55">
+    <animate attributeName="opacity" values="0.55;0.1;0.55" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="563" cy="68" r="2.2" fill="#E8A87C" opacity="0.4">
+    <animate attributeName="opacity" values="0.4;0.08;0.4" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="575" cy="58" r="2.5" fill="#6C9EBF" opacity="0.45">
+    <animate attributeName="opacity" values="0.45;0.1;0.45" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+</svg>

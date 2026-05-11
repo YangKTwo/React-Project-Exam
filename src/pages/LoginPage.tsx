@@ -25,8 +25,11 @@ export function LoginPage() {
   })
 
   return (
-    <div style={{ maxWidth: 400, margin: '48px auto', padding: 16 }}>
-      <Card>
+    <div style={{ minHeight: '100vh',
+      display: 'grid',
+      placeItems: 'center',
+      }}>
+      <Card style={{ width: '100%', maxWidth: 400 }}>
         <Typography.Title level={4} style={{ marginTop: 0 }}>
           登录
         </Typography.Title>
@@ -48,6 +51,7 @@ export function LoginPage() {
           </Form.Item>
 
           <Form.Item label="账号">
+            
             <Controller
               name="loginValue"
               control={control}
@@ -66,6 +70,24 @@ export function LoginPage() {
               control={control}
               rules={{ required: true }}
               render={({ field }) => <Input.Password {...field} />}
+            />
+          </Form.Item>
+          <Form.Item label="角色">
+            <Controller
+              name="roleType"
+              control={control}
+              rules={{required: true}}
+              render={({field}) => (
+                <Select
+                  {...field}
+                  placeholder="请选择角色"
+                  options={[
+                    {label: '学生', value: 'student'},
+                    {label: '教师', value: 'teacher'},
+                    {label: '管理员', value: 'admin'},
+                  ]}
+                />
+              )}
             />
           </Form.Item>
           <Button type="primary" htmlType="submit" block>
