@@ -4,6 +4,7 @@ import {
   LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
+  ProfileOutlined,
 } from "@ant-design/icons";
 import { Button, Layout, Menu, theme, Typography } from "antd";
 import { Header, Content } from "antd/es/layout/layout";
@@ -11,12 +12,13 @@ import Sider from "antd/es/layout/Sider";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import logoUrl from "../assets/icons/logo.svg";
 import { layoutSidebar } from "./them/layoutSidebar";
-import { useState } from "react";
 import { clearAccessToken } from "../utils/token";
+import { useUIStore } from "../stores";
 
 const menuItems = [
   { key: "/", icon: <HomeOutlined />, label: "首页" },
   { key: "/exam", icon: <FileTextOutlined />, label: "考试" },
+  { key: "/question", icon: <ProfileOutlined />, label: "题目列表" },
 ];
 
 export function MainLayout() {
@@ -34,24 +36,29 @@ export function MainLayout() {
     )?.key ?? "/",
   ];
 
-  const [collapsed, setCollapsed] = useState(false);
+  // const [collapsed, setCollapsed] = useState(false);
+  const { sidebarCollapsed, setSidebarCollapsed, toggleSidebar } = useUIStore();
 
   const handleLogout = () => {
     clearAccessToken();
     navigate("/login", { replace: true });
   };
   return (
-    // 整页至少一屏高，避免侧栏底部悬空
-    <Layout style={{ minHeight: "100vh" }}>
+    // 整页固定高度，不滚动，内部区域自行处理滚动
+    <Layout style={{ height: "100vh", overflow: "hidden" }}>
       <Sider
         breakpoint="lg"
         collapsible
-        collapsed={collapsed}
-        onCollapse={setCollapsed}
+        collapsed={sidebarCollapsed}
+        onCollapse={setSidebarCollapsed}
         collapsedWidth={0}
         trigger={null}
         theme={layoutSidebar.theme}
-        style={{ background: layoutSidebar.background }}
+        style={{
+          height: "100vh",
+          overflow: "hidden",
+          background: layoutSidebar.background,
+        }}
         width={230}
       >
         <Link
@@ -66,7 +73,7 @@ export function MainLayout() {
         >
           <img
             src={logoUrl}
-            alt="在线考试"
+            alt="Assessment System"
             style={{
               display: "block",
               maxWidth: "100%",
@@ -99,9 +106,11 @@ export function MainLayout() {
         >
           <Button
             type="text"
-            aria-label={collapsed ? "展开侧栏" : "收起侧栏"}
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed((c) => !c)}
+            aria-label={sidebarCollapsed ? "展开侧栏" : "收起侧栏"}
+            icon={
+              sidebarCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />
+            }
+            onClick={toggleSidebar}
             style={{ zIndex: 1 }}
           />
           <Typography.Title
@@ -128,15 +137,17 @@ export function MainLayout() {
         </Header>
         <Content
           style={{
-            margin: "24px 16px 0",
-            overflow: "auto",
+            margin: "24px 16px",
+            height: "calc(100vh - 104px)",
+            overflow: "hidden",
             background: layoutSidebar.contentBackground,
           }}
         >
           <div
             style={{
               padding: 24,
-              minHeight: 800,
+              height: "100%",
+              overflow: "hidden",
               background: layoutSidebar.contentInnerBackground,
               borderRadius: borderRadiusLG,
             }}
