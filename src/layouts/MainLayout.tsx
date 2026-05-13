@@ -93,7 +93,7 @@ export function MainLayout() {
         />
       </Sider>
 
-      <Layout>
+      <Layout style={{ flex: 1, minHeight: 0, overflow: "hidden" }}>
         <Header
           style={{
             position: "relative",
@@ -138,16 +138,20 @@ export function MainLayout() {
         <Content
           style={{
             margin: "24px 16px",
-            height: "calc(100vh - 104px)",
+            flex: 1,
+            minHeight: 0,
             overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
             background: layoutSidebar.contentBackground,
           }}
         >
           <div
             style={{
               padding: 24,
-              height: "100%",
-              overflow: "hidden",
+              flex: 1,
+              minHeight: 0,
+              overflow: "auto",
               background: layoutSidebar.contentInnerBackground,
               borderRadius: borderRadiusLG,
             }}

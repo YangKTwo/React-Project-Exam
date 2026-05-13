@@ -3,7 +3,7 @@ import zhCN from "antd/locale/zh_CN";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { RequireAuth } from "./components/requireAuth/RequireAuth";
 import { getSidebarMenuTokens } from "./layouts/them/layoutSidebar";
-import { ExamPage } from "./pages/ExamPage";
+import { ExamList } from "./pages/student/ExamList";
 import { LoginPage } from "./pages/LoginPage";
 import { MainLayout } from "./layouts/MainLayout";
 import { QuestionPage } from "./pages/QuestionPage";
@@ -32,7 +32,7 @@ function App() {
             {/* 对应地址 / */}
             <Route index element={<div>首页</div>} />
             {/* 对应地址 /exam */}
-            <Route path="exam" element={<ExamPage />} />
+            <Route path="exam" element={<ExamList />} />
             <Route path="question" element={<QuestionPage />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
